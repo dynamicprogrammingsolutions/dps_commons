@@ -6,7 +6,7 @@
 
     <groupId>dps.commons</groupId>
     <artifactId>dps.commons</artifactId>
-    <version>1.0.4</version>
+    <version>1.1.0</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -15,6 +15,7 @@
     </properties>
 
     <build>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -23,6 +24,18 @@
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <configuration>
+                    <localRepositoryPath>/home/ferenci84/Dokumentumok/JEE/repo</localRepositoryPath>
+                    <file>${build.directory}/${build.finalName}.${packaging}</file>
+                    <groupId>${groupId}</groupId>
+                    <artifactId>${artifactId}</artifactId>
+                    <version>${version}</version>
+                    <pomFile>pom.xml</pomFile>
                 </configuration>
             </plugin>
         </plugins>
@@ -37,7 +50,7 @@
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
-            <version>7.0</version>
+            <version>8.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
