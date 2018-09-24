@@ -12,12 +12,18 @@ import javax.enterprise.inject.spi.CDI;
 import javax.inject.Singleton;
 import java.util.Set;
 
+/**
+ *
+ * To start startup classes, call init() from a method with this possible signature:
+ * public void init(@Observes @Initialized(ApplicationScoped.class) Object init)
+ *
+ */
+@Dependent
 public class StartupInit implements HasLogger {
 
     public void init() {
 
         logInfo("Loading Startup Classes");
-
         BeanManager beanManager = CDI.current().getBeanManager();
 
         Set<Bean<?>> beans = beanManager.getBeans(Object.class);
